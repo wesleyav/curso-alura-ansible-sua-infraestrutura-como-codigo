@@ -89,3 +89,11 @@ $ ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/m
         - mysql-server-5.6
         - python-mysqldb
         - php5.mysql
+
+##################################################
+
+# Inserindo o nome do usuário e chave no arquivo de hosts
+# 192.168.0.7 ansible_user=vagrant ansible_ssh_private_key_file="/Users/<seu usuario>/wordpress_com_ansible/..vagrant/machines/wordpress/vistualbox/private_key"
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
