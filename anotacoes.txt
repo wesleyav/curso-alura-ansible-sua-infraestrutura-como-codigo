@@ -145,3 +145,28 @@ $ mysql -u root
 
 # Link do módulo MySQL:
 # https://docs.ansible.com/ansible/2.6/modules/mysql_db_module.html
+
+##################################################
+
+# Criando usuario mysql no arquivo de hosts
+# Adicionar a linha de configuração para a VM no arquivo playbook:
+# Alterar playbook
+- name: 'Cria o usuário do MySQL'
+      mysql_user: 
+        login_user: root
+        name: wordpress_user
+        password: 12345
+        priv: 'wordpress_db.*:ALL'
+        state: present
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+$ mysql -u root
+$ show databases;
+$ show tables;
+
+# Testando usuário mysql
+$ mysql -u wordpress_user -p
+# inserir senha
+$ show databases;
