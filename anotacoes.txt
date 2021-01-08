@@ -12,7 +12,13 @@ $ vagrant up
 $ vagrant ssh
 
 # Instalar ansible
-$ sudo apt-get install ansible
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install software-properties-common
+$ sudo apt-add-repository ppa:ansible/ansible
+# Enter
+$ sudo apt update
+$ sudo apt install ansible
 
 # Checar versão
 $ ansible --version
