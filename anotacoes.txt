@@ -212,3 +212,25 @@ $ $ ansible-playbook provisioning.yml -i hosts
         - { regex: 'username_here', value: 'wordpress_use'}
         - { regex: 'password_here', value: 12345'}
       become: yes
+
+# Criar wordpress_com_ansible/files/000-default.conf
+# Adicionar a linha de configuração para a VM no arquivo playbook:
+# Alterar playbook
+# Configura Apache para servir o Wordpress
+- hosts: all
+  handlers:
+    - name: restart apache
+      service:
+        name: apache2
+        state: restarted
+      become: yes
+
+
+
+- name: 'Configura Apache para servir o Wordpress'
+      copy:
+        src: 'files/000-default.conf'
+        dest: '/etc/apache2/sites-available/000-default.conf'
+      become: yes
+      notify:
+        - restart apache
