@@ -366,3 +366,28 @@ $ vagrant up mysql
 
 # Executando no terminal
 $ $ ansible-playbook provisioning.yml -i hosts
+
+##################################################
+
+# Remover todas as linhas referente a instalação de banco de dados no wordpress no arquivo de playbook
+# Destroi máquina virtual wordpress
+$ vagrant destroy -f wordpress
+
+# Cria nova máquina wordpress
+$ vagrant up wordpress
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+# Acessa o ip no navegador
+
+# Copia o conteúdo do arquivo de configuração
+cat /etc/mysql/my.cnf
+
+# Cria o arquivo my.cnf na pasta files
+# Modifica a entrada bind-address   = 127.0.0.1 para bind-address   = 0.0.0.0
+
+ # Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+# Acessa o ip no navegador
