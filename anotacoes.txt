@@ -1,0 +1,24 @@
+# Criar pasta wordpress_com_ansible
+# Dentro da pasta wordpress_com_ansible criar o Vagrantfile
+
+# Abrir o prompt e dentro da pasta wordpress_com_ansible executar o comando:
+$ vagrant up
+
+# Criar arquivo hosts e definir:
+# [wordpress]
+# 192.168.0.7
+
+# Acessar VM wordpress via SSH
+$ vagrant ssh
+
+# Instalar ansible
+$ sudo apt-get install ansible
+
+# Checar versão
+$ ansible --version
+
+# Testando ansible
+$ ansible wordpress -u vagrant --private-key .vagrant/machines/wordpress/virtualbox/private_key -i hosts -m shell -a 'echo Hello World!'
+
+# Testando em modo verboso
+$ ansible -vvvv wordpress -u vagrant --private-key .vagrant/machines/wordpress/virtualbox/private_key -i hosts -m shell -a 'echo Hello World!'
