@@ -65,3 +65,27 @@ $ ls /vagrant
 $ ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
 
 # Acessar o ip no navegador para testar o apache
+
+##################################################
+
+# Simplificando o script com with_itens
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# Alterar playbook
+---
+- hosts: all
+  tasks:
+    - name: 'Instala pacotes de dependência do sistema operacional'
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes
+      with_itens:
+        - php5
+        - apache2
+        - libeapache2-mod-php5
+        - php5-gd
+        - libssh2-php
+        - php5-mcrypt
+        - mysql-server-5.6
+        - python-mysqldb
+        - php5.mysql
