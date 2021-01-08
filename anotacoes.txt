@@ -31,3 +31,31 @@ $ ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/m
 # Acessar via ssh e visualizar o arquivo criado no diretório /vagrant
 $ vagrant ssh
 $ ls /vagrant
+
+##################################################
+
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# Alterar playbook
+---
+- hosts: all
+  tasks:
+    - name: 'Instala o PHP5'
+      apt: 
+        name: php5
+        state: latest
+      become: yes
+    - name: 'Instala o Apache2'
+      apt:
+        name: apache2
+        state: latest
+      become: yes
+    - name: 'Instala o modphp'
+      apt:
+        name: libeapache2-mod-php5
+        state: latest
+      become: yes
+
+# Instalar pacotes php5 e apache2 definido no playbook
+$ ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
+
+# Acessar o ip no navegador para testar o apache
