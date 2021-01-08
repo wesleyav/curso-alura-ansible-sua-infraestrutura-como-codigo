@@ -137,3 +137,11 @@ $ $ ansible-playbook provisioning.yml -i hosts
 # Logando e testando
 $ vagrant ssh
 $ mysql -u root
+
+##################################################
+
+# Link da documentação do Ansible (v2.6) com a lista de todos os módulos de banco de dados:
+# https://docs.ansible.com/ansible/2.6/modules/list_of_database_modules.html
+
+# Link do módulo MySQL:
+# https://docs.ansible.com/ansible/2.6/modules/mysql_db_module.html
