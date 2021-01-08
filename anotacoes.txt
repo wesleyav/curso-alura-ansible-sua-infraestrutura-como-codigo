@@ -40,7 +40,7 @@ $ ls /vagrant
 
 ##################################################
 
-# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# Adicionar a linha de configuração para a VM no arquivo playbook:
 # Alterar playbook
 ---
 - hosts: all
@@ -69,7 +69,7 @@ $ ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/m
 ##################################################
 
 # Simplificando o script com with_itens
-# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# Adicionar a linha de configuração para a VM no arquivo playbook:
 # Alterar playbook
 ---
 - hosts: all
@@ -97,3 +97,43 @@ $ ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/m
 
 # Executando no terminal
 $ $ ansible-playbook provisioning.yml -i hosts
+
+##################################################
+
+# Criando banco mysql no arquivo de hosts
+# Adicionar a linha de configuração para a VM no arquivo playbook:
+# Alterar playbook
+- name: 'Cria o banco do MySQl'
+      mysql_db: 
+        name: wordpress_db
+        login_user: root
+      # login_password: (Aqui não será informada a senha pois nessa versão o padrão é criar login sem senha)
+        state: present
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+# Logando e testando
+$ vagrant ssh
+$ mysql -u root
+$ show databases;
+$ use wordpress_db;
+$ show tables;
+$ quit;
+
+# Deletando banco mysql no arquivo de hosts
+# Adicionar a linha de configuração para a VM no arquivo playbook:
+# Alterar playbook
+- name: 'Cria o banco do MySQl'
+      mysql_db: 
+        name: wordpress_db
+        login_user: root
+      # login_password: (Aqui não será informada a senha pois nessa versão o padrão é criar login sem senha)
+        state: absent
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+# Logando e testando
+$ vagrant ssh
+$ mysql -u root
