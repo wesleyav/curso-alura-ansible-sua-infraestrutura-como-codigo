@@ -456,3 +456,8 @@ $ $ ansible-playbook provisioning.yml -i hosts
 # roles/wordpress/handlers/main.yml
 # roles/wordpress/tasks/main.yml
 # roles/wordpress/templates/000-default.conf.j2
+
+##################################################
+
+# roles/mysql/defaults/main.yml
+# roles/wordpress/meta/main.yml
