@@ -441,3 +441,18 @@ $ $ ansible-playbook provisioning.yml -i hosts
 ##################################################
 
 # Documentação sobre Variáveis -> http://docs.ansible.com/ansible/latest/playbooks_variables.html#what-makes-a-valid-variable-name
+
+
+# Criar um grupo de três roles:
+
+# Uma será responsável por instalar o Webserver;
+# Uma para instalar o MySQL;
+# E uma para instalar o Wordpress.
+
+# roles/mysql/files
+# roles/mysql/handlers
+# roles/mysql/tasks
+# roles/Webserver/tasks/main.yml
+# roles/wordpress/handlers/main.yml
+# roles/wordpress/tasks/main.yml
+# roles/wordpress/templates/000-default.conf.j2
