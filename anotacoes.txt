@@ -382,12 +382,49 @@ $ $ ansible-playbook provisioning.yml -i hosts
 # Acessa o ip no navegador
 
 # Copia o conteúdo do arquivo de configuração
-cat /etc/mysql/my.cnf
+$ cat /etc/mysql/my.cnf
 
 # Cria o arquivo my.cnf na pasta files
 # Modifica a entrada bind-address   = 127.0.0.1 para bind-address   = 0.0.0.0
 
- # Executando no terminal
+# Executando no terminal
 $ $ ansible-playbook provisioning.yml -i hosts
 
 # Acessa o ip no navegador
+
+##################################################
+
+# Criar variáveis:
+# Substituir wordpress_db por "{{ wp_db_name }}"
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+# Validando alteração
+$ ansible-playbook -i hosts --extra-vars 'wp_db_name=wordpress_db' provisioning.yml
+
+# Substituir wordpress_user por {{ wp_username }}
+
+# Validando alteração
+$ ansible-playbook -i hosts --extra-vars 'wp_db_name=wordpress_db wp_username=wordpress_user' provisioning.yml
+
+# Criar diretório group_vars/all.yml
+
+# Adicionar variáveis nele:
+---
+wp_username: wordpress_user
+wp_db_name: wordpress_db
+wp_user_password: 12345
+wp_installation_dir: '/var/www/wordpress'
+wp_host_ip: '192.168.0.7'
+wp_db_ip: '192.168.0.9'
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
+
+# Criar diretório group_vars/database.yml e colar wp_db_ip: '192.168.0.9'
+
+# Criar diretório group_vars/wordpress.yml e colar wp_host_ip: '192.168.0.7'
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
