@@ -437,3 +437,7 @@ $ $ ansible-playbook provisioning.yml -i hosts
 
 # Executando no terminal
 $ $ ansible-playbook provisioning.yml -i hosts
+
+##################################################
+
+# Documentação sobre Variáveis -> http://docs.ansible.com/ansible/latest/playbooks_variables.html#what-makes-a-valid-variable-name
