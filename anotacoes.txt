@@ -428,3 +428,12 @@ $ $ ansible-playbook provisioning.yml -i hosts
 
 # Executando no terminal
 $ $ ansible-playbook provisioning.yml -i hosts
+
+##################################################
+
+# Criar diretório wordpress_com_ansible/templates e mover o arquivo 000-default.conf nomeando-o para 000-default.conf.j2
+
+# Nesse arquivo alterar DocumentRoot /var/www/wordpress para DocumentRoot {{ wp_installation_dir }}
+
+# Executando no terminal
+$ $ ansible-playbook provisioning.yml -i hosts
